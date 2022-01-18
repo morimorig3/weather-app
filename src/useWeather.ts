@@ -17,6 +17,15 @@ export type Weather = {
   main: WeatherMap;
 };
 
+type dailyTemp = {
+  morn: number;
+  day: number;
+  eve: number;
+  night: number;
+  min: number;
+  max: number;
+};
+
 export type WeatherInfo = {
   clouds: number;
   dew_point: number;
@@ -26,7 +35,7 @@ export type WeatherInfo = {
   pressure: number;
   sunrise: number;
   sunset: number;
-  temp: number;
+  temp: number | dailyTemp;
   uvi: number;
   visibility: number;
   weather: Weather[];

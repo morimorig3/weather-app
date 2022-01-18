@@ -9,7 +9,7 @@ type Props = {
 export const Layout: FunctionComponent<Props> = ({ children }) => (
   <Container maxW="container.md">
     <VStack minHeight="100vh">
-      <Box w="full" flex={1} py={10}>
+      <Box w="full" flex={1} py={4}>
         {children}
       </Box>
       <HStack>
