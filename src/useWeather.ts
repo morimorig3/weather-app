@@ -57,6 +57,7 @@ type ResponseWeather = {
 };
 
 export const useWeather = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState<ResponseWeather | null>(null);
   const [position, getPosition] = useCurrentPosition();
@@ -91,14 +92,16 @@ export const useWeather = () => {
   };
 
   useEffect(() => {
+    setIsLoading(false);
     const fetchData = async () => {
       const cityName = await getCityName(position);
       const weather = await getWeather(position);
       setCity(cityName);
       setWeather(weather);
+      setIsLoading(true);
     };
     fetchData();
   }, [position]);
 
-  return [city, weather, reload] as const;
+  return [city, weather, reload, isLoading] as const;
 };
