@@ -1,11 +1,12 @@
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { Layout } from "./layout";
+import { WeatherApp } from "./weatherApp";
 
 export function App() {
   return (
     <ChakraProvider>
       <Layout>
-        <Box>aaaa</Box>
+        <WeatherApp />
       </Layout>
     </ChakraProvider>
   );
