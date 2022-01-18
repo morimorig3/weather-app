@@ -4,7 +4,7 @@ import {
   OPEN_WEATHER_ENDPOINT_GEOCORDING,
   OPEN_WEATHER_ENDPOINT_ONECALL,
 } from "./constans";
-import { WeatherMap } from "./weather";
+import { WeatherMap } from "./weatherCard";
 
 type Hour = {
   "1h": number;

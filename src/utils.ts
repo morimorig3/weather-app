@@ -4,6 +4,6 @@ export const formatDate = (d: Date): string => {
 };
 
 export const formatTime = (d: Date): string =>
-  `${d.getHours()}時${d.getMinutes()}分`;
+  `${("00" + d.getHours()).slice(-2)}:${("00" + d.getMinutes()).slice(-2)}`;
 
 export const unixtimeToDate = (number: number): Date => new Date(number * 1000);

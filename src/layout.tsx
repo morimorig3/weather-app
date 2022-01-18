@@ -7,8 +7,8 @@ type Props = {
 };
 
 export const Layout: FunctionComponent<Props> = ({ children }) => (
-  <Container maxW="container.lg">
-    <VStack minHeight="100vh" px={5}>
+  <Container maxW="container.md">
+    <VStack minHeight="100vh">
       <Box w="full" flex={1} py={10}>
         {children}
       </Box>
