@@ -1,12 +1,14 @@
 import { useState } from "preact/hooks";
 
-const DEFAULT_POSITION = {
-  lat: 0,
-  lon: 0,
+const DEFAULT_POSITION_OSAKA = {
+  lat: 34.68639,
+  lon: 135.52,
 };
 
+export type Position = typeof DEFAULT_POSITION_OSAKA;
+
 export const useCurrentPosition = () => {
-  const [position, setPosition] = useState(DEFAULT_POSITION);
+  const [position, setPosition] = useState(DEFAULT_POSITION_OSAKA);
 
   const successCallback = (position: GeolocationPosition) => {
     setPosition({
@@ -40,7 +42,7 @@ export const useCurrentPosition = () => {
     timeout: Infinity,
   };
 
-  const resetPosition = () => setPosition(DEFAULT_POSITION);
+  const resetPosition = () => setPosition(DEFAULT_POSITION_OSAKA);
 
   const getPosition = () => {
     resetPosition();
