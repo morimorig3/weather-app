@@ -4,12 +4,17 @@ import {
   OPEN_WEATHER_ENDPOINT_GEOCORDING,
   OPEN_WEATHER_ENDPOINT_ONECALL,
 } from "./constans";
+import { WeatherMap } from "./weather";
+
+type Hour = {
+  "1h": number;
+};
 
 export type Weather = {
   description: string;
   icon: string;
   id: number;
-  main: string;
+  main: WeatherMap;
 };
 
 export type WeatherInfo = {
@@ -27,6 +32,9 @@ export type WeatherInfo = {
   weather: Weather[];
   wind_deg: number;
   wind_speed: number;
+  wind_gust?: number;
+  rain?: Hour;
+  snow?: Hour;
 };
 
 type ResponseWeather = {
