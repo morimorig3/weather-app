@@ -1,14 +1,14 @@
 import { OPEN_WEATHER_ENDPOINT_GEOCORDING } from "../constans";
 import { Position } from "../hooks/useCurrentPosition";
 
-export const getCity = async (position: Position) => {
+export const getCityName = async (position: Position): Promise<string> => {
   const res = await fetch(
     `${OPEN_WEATHER_ENDPOINT_GEOCORDING}?lat=${position.lat}&lon=${
       position.lon
     }&limit=1&lang=ja&appid=${import.meta.env.VITE_API_KEY}`
   );
 
-  const weather = await res.json();
+  const city = await res.json();
 
-  return weather.pop();
+  return city.pop().local_names.ja;
 };

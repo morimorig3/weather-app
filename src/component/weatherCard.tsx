@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import { Divider, Box, HStack, VStack, Spacer, Text } from "@chakra-ui/react";
-import { WeatherInfo } from "../hooks/useWeather";
+import { WeatherInfo } from "../lib/getWeather";
 import { unixtimeToDate, formatDate, formatTime } from "../lib/utils";
 import {
   BsCloudLightningRain,
