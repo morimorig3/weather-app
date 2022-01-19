@@ -28,8 +28,9 @@ export const WeatherCard: VFC<Props> = ({ data }) => {
   const windSpeed = data.wind_speed;
   const rain = data?.rain?.["1h"];
   const snow = data?.snow?.["1h"];
+
   const weatherType = data.weather[0].main;
-  const weatherTitle = weatherMap[weatherType].title;
+  const weatherTitle = weatherMap[weatherType][0].title;
   let temp = 0;
   if (typeof data.temp === "number") {
     temp = Math.round(data.temp * 10) / 10;
@@ -49,7 +50,7 @@ export const WeatherCard: VFC<Props> = ({ data }) => {
         </HStack>
       </HStack>
       <HStack justifyContent="center" spacing={4}>
-        <WeatherIcon weatherType={weatherType} size="5em" />
+        <WeatherIcon weather={data.weather[0]} size="5em" />
         <Text fontSize="2xl" fontWeight="bold">
           {weatherTitle}
         </Text>

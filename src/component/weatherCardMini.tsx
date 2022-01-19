@@ -36,7 +36,7 @@ export const WeatherCardMini: VFC<Props> = ({ data }) => {
         </HStack>
       </VStack>
       <HStack justifyContent="center">
-        <WeatherIcon weatherType={weatherType} size="3em" />
+        <WeatherIcon weather={data.weather[0]} size="3em" />
       </HStack>
       <VStack alignItems="flex-start" gap={0}>
         <Text fontSize="sm">
