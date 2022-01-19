@@ -1,12 +1,12 @@
-import { FunctionComponent, ComponentChildren } from "preact";
+import { VFC, ReactNode } from "react";
 import { Container, HStack, VStack, Box, Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 type Props = {
-  children: ComponentChildren;
+  children: ReactNode;
 };
 
-export const Layout: FunctionComponent<Props> = ({ children }) => (
+export const Layout: VFC<Props> = ({ children }) => (
   <Container maxW="container.md">
     <VStack minHeight="100vh">
       <Box w="full" flex={1} py={4}>

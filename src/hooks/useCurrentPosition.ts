@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState } from "react";
 
 const DEFAULT_POSITION_OSAKA = {
   lat: 34.68639,

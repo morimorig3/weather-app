@@ -1,10 +1,10 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect } from "react";
 import { useCurrentPosition, Position } from "./useCurrentPosition";
 import {
   OPEN_WEATHER_ENDPOINT_GEOCORDING,
   OPEN_WEATHER_ENDPOINT_ONECALL,
-} from "./constans";
-import { WeatherMap } from "./weatherCard";
+} from "../constans";
+import { WeatherMap } from "../component/weatherCard";
 
 type Hour = {
   "1h": number;

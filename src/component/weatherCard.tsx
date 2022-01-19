@@ -1,7 +1,7 @@
-import { FunctionComponent } from "preact";
+import { VFC } from "react";
 import { Divider, Box, HStack, VStack, Spacer, Text } from "@chakra-ui/react";
-import { WeatherInfo } from "./useWeather";
-import { unixtimeToDate, formatDate, formatTime } from "./utils";
+import { WeatherInfo } from "../hooks/useWeather";
+import { unixtimeToDate, formatDate, formatTime } from "../lib/utils";
 import {
   BsCloudLightningRain,
   BsCloudDrizzle,
@@ -49,7 +49,7 @@ type Props = {
   data: WeatherInfo;
 };
 
-export const WeatherCard: FunctionComponent<Props> = ({ data }) => {
+export const WeatherCard: VFC<Props> = ({ data }) => {
   const date = formatDate(unixtimeToDate(data.dt));
   const time = formatTime(unixtimeToDate(data.dt));
   const sunRise = formatTime(unixtimeToDate(data.sunrise));

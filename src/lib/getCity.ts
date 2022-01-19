@@ -1,5 +1,5 @@
-import { OPEN_WEATHER_ENDPOINT_GEOCORDING } from "./constans";
-import { Position } from "./useCurrentPosition";
+import { OPEN_WEATHER_ENDPOINT_GEOCORDING } from "../constans";
+import { Position } from "../hooks/useCurrentPosition";
 
 export const getCity = async (position: Position) => {
   const res = await fetch(
