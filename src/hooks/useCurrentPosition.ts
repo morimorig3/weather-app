@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState } from "react";
 
 const DEFAULT_POSITION_OSAKA = {
   lat: 34.68639,
@@ -19,22 +19,22 @@ export const useCurrentPosition = () => {
   const handleError = ({ code, message }: GeolocationPositionError) => {
     switch (code) {
       case 1:
-        console.error(
+        alert(
           "このページにはアクセス許可がないため、位置情報の取得に失敗しました。"
         );
         break;
       case 2:
-        console.error(
+        alert(
           "少なくともひとつの位置情報ソースが内部的なエラーを返したため、位置情報の取得に失敗しました。"
         );
         break;
       case 3:
-        console.error(
+        alert(
           "指定された制限時間内に位置情報を取得することができませんでした。"
         );
         break;
       default:
-        console.error(message);
+        alert(message);
     }
   };
 

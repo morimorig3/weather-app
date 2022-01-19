@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { Layout } from "./layout";
-import { WeatherApp } from "./weatherApp";
+import { Layout } from "./component/layout";
+import { WeatherApp } from "./component/weatherApp";
 
 export function App() {
   return (

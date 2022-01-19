@@ -1,5 +1,5 @@
 import { Button, Heading, VStack, HStack } from "@chakra-ui/react";
-import { useWeather } from "./useWeather";
+import { useWeather } from "../hooks/useWeather";
 import { WeatherCard } from "./weatherCard";
 import { WeatherCardMini } from "./weatherCardMini";
 
@@ -16,7 +16,9 @@ export const WeatherApp = () => {
       {weather && <WeatherCard data={weather.current} />}
       <HStack w="full" spacing={4} py={6} overflowX="scroll">
         {weather &&
-          weather.daily.map((data) => <WeatherCardMini data={data} />)}
+          weather.daily.map((data, index) => (
+            <WeatherCardMini key={index} data={data} />
+          ))}
       </HStack>
     </VStack>
   );
