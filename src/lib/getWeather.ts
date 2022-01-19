@@ -1,11 +1,10 @@
 import { OPEN_WEATHER_ENDPOINT_ONECALL } from "../constans";
 import { Position } from "../hooks/useCurrentPosition";
-import { WeatherMap } from "../component/weatherCard";
+import { WeatherType } from "../component/weatherIcon";
 
 export type ResponseWeather = {
   current: WeatherInfo;
   daily: WeatherInfo[];
-  hourly: WeatherInfo[];
   lat: number;
   lon: number;
   timezone: string;
@@ -20,7 +19,7 @@ export type Weather = {
   description: string;
   icon: string;
   id: number;
-  main: WeatherMap;
+  main: WeatherType;
 };
 
 type dailyTemp = {
@@ -58,7 +57,7 @@ export const getWeather = async (
   const res = await fetch(
     `${OPEN_WEATHER_ENDPOINT_ONECALL}?lat=${position.lat}&lon=${
       position.lon
-    }&exclude=minutely,alerts&units=metric&lang=ja&appid=${
+    }&exclude=hourly,minutely,alerts&units=metric&lang=ja&appid=${
       import.meta.env.VITE_API_KEY
     }
       `

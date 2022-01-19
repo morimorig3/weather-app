@@ -1,19 +1,9 @@
 import { VFC } from "react";
 import { Divider, Box, HStack, VStack, Spacer, Text } from "@chakra-ui/react";
 import { WeatherInfo } from "../lib/getWeather";
+import { WeatherIcon, weatherMap } from "./weatherIcon";
 import { unixtimeToDate, formatDate, formatTime } from "../lib/utils";
 import {
-  BsCloudLightningRain,
-  BsCloudDrizzle,
-  BsCloudRain,
-  BsCloudSnow,
-  BsCloudFog,
-  BsCloudHaze,
-  BsCloudHaze1,
-  BsCloudRainHeavy,
-  BsTornado,
-  BsSun,
-  BsCloud,
   BsClock,
   BsThermometerHalf,
   BsMoisture,
@@ -25,26 +15,6 @@ import {
   BsSnow,
 } from "react-icons/bs";
 
-const weatherMap = {
-  Thunderstorm: { title: "雷雨", icon: BsCloudLightningRain },
-  Drizzle: { title: "霧雨", icon: BsCloudDrizzle },
-  Rain: { title: "雨", icon: BsCloudRain },
-  Snow: { title: "雪", icon: BsCloudSnow },
-  Mist: { title: "もや", icon: BsCloudFog },
-  Smoke: { title: "煙", icon: BsCloudHaze },
-  Haze: { title: "かすみ", icon: BsCloudHaze },
-  Dust: { title: "砂塵", icon: BsCloudHaze },
-  Fog: { title: "霧", icon: BsCloudHaze },
-  Sand: { title: "砂", icon: BsCloudHaze1 },
-  Ash: { title: "灰", icon: BsCloudHaze1 },
-  Squall: { title: "スコール", icon: BsCloudRainHeavy },
-  Tornado: { title: "竜巻", icon: BsTornado },
-  Clear: { title: "快晴", icon: BsSun },
-  Clouds: { title: "くもり", icon: BsCloud },
-} as const;
-
-export type WeatherMap = keyof typeof weatherMap;
-
 type Props = {
   data: WeatherInfo;
 };
@@ -54,13 +24,16 @@ export const WeatherCard: VFC<Props> = ({ data }) => {
   const time = formatTime(unixtimeToDate(data.dt));
   const sunRise = formatTime(unixtimeToDate(data.sunrise));
   const sunSet = formatTime(unixtimeToDate(data.sunset));
-  const temp = Math.round(data.temp * 10) / 10;
   const humidity = data.humidity;
   const windSpeed = data.wind_speed;
   const rain = data?.rain?.["1h"];
   const snow = data?.snow?.["1h"];
-  const weather = weatherMap[data.weather[0].main];
-  // const description = data.weather[0].description;
+  const weatherType = data.weather[0].main;
+  const weatherTitle = weatherMap[weatherType].title;
+  let temp = 0;
+  if (typeof data.temp === "number") {
+    temp = Math.round(data.temp * 10) / 10;
+  }
 
   return (
     <Box w="full" boxShadow="lg" p="6" rounded="md">
@@ -76,9 +49,9 @@ export const WeatherCard: VFC<Props> = ({ data }) => {
         </HStack>
       </HStack>
       <HStack justifyContent="center" spacing={4}>
-        <weather.icon size="5em" />
+        <WeatherIcon weatherType={weatherType} size="5em" />
         <Text fontSize="2xl" fontWeight="bold">
-          {weather.title}
+          {weatherTitle}
         </Text>
       </HStack>
       <Divider m={2} />
